@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import './App.css';
+import Sidebar from './componets/pages/sidebar/Sidebar'
+import Viewpro from './componets/pages/viewproduct/Viewpro';
+import Productform from './componets/pages/Submitproform/Productform';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+    <div className='main__container'>
+    <Sidebar/>
+      <Routes>
+      <Route path='/addpro' element={<Productform/>} />
+      <Route path='/updatepro/:id' element={<Productform/>} />
+     <Route path='/' element={<Viewpro/>} />
+     
+     </Routes>
+    </div>
+    </Router>
     </div>
   );
 }
